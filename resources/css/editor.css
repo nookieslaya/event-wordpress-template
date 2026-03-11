@@ -1,0 +1,37 @@
+@import "./app.css";
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+@source "../blocks/";
+@source "../js/";
+
+.editor-styles-wrapper .event-inspector-group {
+  display: grid;
+  gap: 16px;
+  margin: 8px 0 4px;
+  padding: 14px;
+  border: 1px solid #d4d4d8;
+  border-radius: 10px;
+  background: #fafafa;
+}
+
+.editor-styles-wrapper .event-url-control {
+  display: grid;
+  gap: 8px;
+}
+
+.editor-styles-wrapper .wp-block-event-hero,
+.editor-styles-wrapper .event-hero-editor-preview {
+  max-width: none !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.editor-styles-wrapper .event-hero {
+  min-height: 92svh;
+}
+
+.editor-styles-wrapper .event-hero-reveal {
+  opacity: 1 !important;
+  transform: none !important;
+  animation: none !important;
+}

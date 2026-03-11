@@ -1,0 +1,27 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "event/story-split",
+  "title": "Event Story Split",
+  "category": "design",
+  "icon": "align-pull-left",
+  "description": "Two-column story section with left-right reveal animation.",
+  "textdomain": "sage",
+  "supports": {
+    "anchor": true,
+    "html": false
+  },
+  "attributes": {
+    "lineOne": { "type": "string", "default": "CRAFTING" },
+    "lineTwo": { "type": "string", "default": "MOMENTS" },
+    "lineThree": { "type": "string", "default": "THAT MATTER" },
+    "description": {
+      "type": "string",
+      "default": "For over 15 years, we've been pushing the boundaries of live event production. From intimate concerts to massive festivals, corporate gatherings to immersive installations, we bring visions to life with precision, passion, and unparalleled technical expertise."
+    },
+    "linkLabel": { "type": "string", "default": "Learn Our Story" },
+    "linkUrl": { "type": "string", "default": "#about" },
+    "imageId": { "type": "number", "default": 0 },
+    "imageUrl": { "type": "string", "default": "" }
+  }
+}
