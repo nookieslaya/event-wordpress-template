@@ -12,16 +12,23 @@
     "html": false
   },
   "attributes": {
+    "titlePrefix": { "type": "string", "default": "OUR" },
+    "titleHighlight": { "type": "string", "default": "EXPERTISE" },
+    "subtitle": {
+      "type": "string",
+      "default": "From concept to execution, we deliver comprehensive event production solutions"
+    },
+    "linkLabel": { "type": "string", "default": "Learn More" },
     "headline": { "type": "string", "default": "Comprehensive Technology Solutions" },
     "items": {
       "type": "array",
       "default": [
-        { "title": "Cloud Architecture", "desc": "Scalable cloud infrastructure design and migration." },
-        { "title": "Full-Stack Development", "desc": "End-to-end application development with modern frameworks." },
-        { "title": "Database Design", "desc": "High-performance database architecture and optimization." },
-        { "title": "API Development", "desc": "REST and GraphQL API design with documentation." },
-        { "title": "System Integration", "desc": "Connect systems and third-party services into one workflow." },
-        { "title": "Security & Compliance", "desc": "Security best practices, audits and compliance support." }
+        { "title": "Event Production", "desc": "Full-scale event execution from concept to reality", "icon": "✦", "iconId": 0, "iconUrl": "", "color": "#d946ef" },
+        { "title": "Stage Design", "desc": "Custom stages that captivate and inspire", "icon": "▣", "iconId": 0, "iconUrl": "", "color": "#06b6d4" },
+        { "title": "Lighting Design", "desc": "Innovative lighting that sets the mood", "icon": "◉", "iconId": 0, "iconUrl": "", "color": "#f59e0b" },
+        { "title": "Audio & Visual", "desc": "Crystal clear sound and stunning visuals", "icon": "◌", "iconId": 0, "iconUrl": "", "color": "#f43f5e" },
+        { "title": "Festival Production", "desc": "Large-scale outdoor and indoor festivals", "icon": "◎", "iconId": 0, "iconUrl": "", "color": "#10b981" },
+        { "title": "Corporate Events", "desc": "Professional events that impress", "icon": "↗", "iconId": 0, "iconUrl": "", "color": "#8b5cf6" }
       ]
     },
     "headlineEn": { "type": "string" },

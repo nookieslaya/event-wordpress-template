@@ -34,6 +34,11 @@
   margin-bottom: 0 !important;
 }
 
+.editor-styles-wrapper .wp-block-event-services-grid {
+  max-width: none !important;
+  width: 100% !important;
+}
+
 .editor-styles-wrapper .event-hero {
   min-height: 92svh;
 }
@@ -48,4 +53,10 @@
   opacity: 1 !important;
   transform: none !important;
   transition: none !important;
+}
+
+.editor-styles-wrapper .event-expertise-reveal {
+  opacity: 1 !important;
+  transform: none !important;
+  animation: none !important;
 }

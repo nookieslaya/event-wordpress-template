@@ -1,31 +1,96 @@
 import { registerBlockType } from '@wordpress/blocks';
 import { __ } from '@wordpress/i18n';
-import { InspectorControls, useBlockProps } from '@wordpress/block-editor';
-import { Button, PanelBody, TextControl, TextareaControl } from '@wordpress/components';
+import {
+  InspectorControls,
+  MediaUpload,
+  MediaUploadCheck,
+  useBlockProps,
+} from '@wordpress/block-editor';
+import {
+  Button,
+  PanelBody,
+  TextControl,
+  TextareaControl,
+} from '@wordpress/components';
 import metadata from './block.json';
 import {
   getLegacyLocalized,
   getItemLegacyLocalized,
 } from '../shared';
 
-const normalizeItems = (items = []) => items.map((item) => ({
-  title: getItemLegacyLocalized(item, 'title'),
-  desc: getItemLegacyLocalized(item, 'desc'),
-}));
+const HEX_COLOR_RE = /^#([0-9a-f]{3}|[0-9a-f]{6})$/i;
+
+const hexToRgb = (hex) => {
+  if (!HEX_COLOR_RE.test(hex || '')) {
+    return [168, 85, 247];
+  }
+
+  const normalized = hex.length === 4
+    ? `#${hex[1]}${hex[1]}${hex[2]}${hex[2]}${hex[3]}${hex[3]}`
+    : hex;
+
+  return [
+    parseInt(normalized.slice(1, 3), 16),
+    parseInt(normalized.slice(3, 5), 16),
+    parseInt(normalized.slice(5, 7), 16),
+  ];
+};
+
+const normalizeItems = (items = []) => items.map((item, index) => {
+  const [r, g, b] = hexToRgb(item?.color);
+
+  return {
+    title: getItemLegacyLocalized(item, 'title'),
+    desc: getItemLegacyLocalized(item, 'desc'),
+    icon: (item?.icon || ['✦', '▣', '◉', '◌', '◎', '↗'][index] || '✦').slice(0, 2),
+    iconId: Number(item?.iconId || 0),
+    iconUrl: item?.iconUrl || '',
+    color: HEX_COLOR_RE.test(item?.color || '') ? item.color : '#a855f7',
+    rgb: `${r} ${g} ${b}`,
+  };
+});
 
 const ServicesContent = ({ attributes }) => {
-  const headline = getLegacyLocalized(attributes, 'headline', 'Comprehensive Technology Solutions');
+  const titlePrefix = attributes.titlePrefix || 'OUR';
+  const titleHighlight = attributes.titleHighlight || 'EXPERTISE';
+  const subtitle = attributes.subtitle
+    || getLegacyLocalized(attributes, 'headline', 'From concept to execution, we deliver comprehensive event production solutions');
+  const linkLabel = attributes.linkLabel || 'Learn More';
+  const items = normalizeItems(attributes.items);
 
   return (
-    <section className="event-section-container scroll-mt-32 py-20 md:py-24" id="services">
-      <header className="text-left">
-        <h2 className="text-balance text-4xl font-semibold tracking-tight text-white md:text-6xl">{headline}</h2>
+    <section className="event-section-container event-expertise-section scroll-mt-32 py-20 md:py-24" id="services">
+      <header className="mx-auto max-w-5xl text-center">
+        <h2 className="event-expertise-title event-expertise-reveal" style={{ '--delay': '0ms' }}>
+          <span>{titlePrefix}</span>{' '}
+          <span className="event-expertise-title-gradient">{titleHighlight}</span>
+        </h2>
+        <p className="event-expertise-subtitle event-expertise-reveal" style={{ '--delay': '100ms' }}>{subtitle}</p>
       </header>
-      <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-        {normalizeItems(attributes.items).map((item, index) => (
-          <article key={`service-${index}`} className="rounded-3xl border border-white/14 bg-zinc-900/70 p-8 shadow-sm backdrop-blur">
-            <h3 className="text-2xl font-semibold text-zinc-100">{item.title}</h3>
-            <p className="mt-4 text-lg leading-relaxed text-zinc-400">{item.desc}</p>
+
+      <div className="mt-12 grid gap-6 lg:grid-cols-3">
+        {items.map((item, index) => (
+          <article
+            key={`service-${index}`}
+            className="event-expertise-card event-expertise-reveal"
+            style={{
+              '--accent-rgb': item.rgb,
+              '--delay': `${180 + (index * 85)}ms`,
+            }}
+          >
+            <div className="event-expertise-icon" aria-hidden="true">
+              {item.iconUrl ? (
+                <img src={item.iconUrl} alt="" className="event-expertise-icon-image" />
+              ) : (
+                <span>{item.icon}</span>
+              )}
+            </div>
+            <h3 className="event-expertise-card-title">{item.title}</h3>
+            <p className="event-expertise-card-desc">{item.desc}</p>
+            <a href="#contact" className="event-expertise-link">
+              <span>{linkLabel}</span>
+              <span className="event-expertise-link-arrow" aria-hidden="true">→</span>
+            </a>
           </article>
         ))}
       </div>
@@ -36,15 +101,16 @@ const ServicesContent = ({ attributes }) => {
 registerBlockType(metadata.name, {
   ...metadata,
   edit({ attributes, setAttributes }) {
-    const blockProps = useBlockProps();
+    const blockProps = useBlockProps({ className: 'alignfull' });
     const items = normalizeItems(attributes.items);
+    const rawItems = attributes.items || [];
 
     const setItems = (nextItems) => {
       setAttributes({ items: nextItems });
     };
 
     const updateItem = (index, key, value) => {
-      const nextItems = items.map((item, itemIndex) => (
+      const nextItems = rawItems.map((item, itemIndex) => (
         itemIndex === index ? { ...item, [key]: value } : item
       ));
       setItems(nextItems);
@@ -56,6 +122,10 @@ registerBlockType(metadata.name, {
         {
           title: '',
           desc: '',
+          icon: '✦',
+          iconId: 0,
+          iconUrl: '',
+          color: '#a855f7',
         },
       ]);
     };
@@ -85,16 +155,35 @@ registerBlockType(metadata.name, {
     return (
       <>
         <InspectorControls>
-          <PanelBody title={__('Content', 'sage')} initialOpen>
-            <TextControl
-              label={__('Headline', 'sage')}
-              value={getLegacyLocalized(attributes, 'headline')}
-              onChange={(headline) => setAttributes({ headline })}
-            />
+          <PanelBody title={__('Section', 'sage')} initialOpen>
+            <div className="event-inspector-group">
+              <TextControl
+                label={__('Title prefix', 'sage')}
+                value={attributes.titlePrefix || ''}
+                onChange={(titlePrefix) => setAttributes({ titlePrefix })}
+              />
+              <TextControl
+                label={__('Title highlight', 'sage')}
+                value={attributes.titleHighlight || ''}
+                onChange={(titleHighlight) => setAttributes({ titleHighlight })}
+              />
+              <TextareaControl
+                label={__('Subtitle', 'sage')}
+                value={attributes.subtitle || ''}
+                onChange={(subtitle) => setAttributes({ subtitle })}
+              />
+              <TextControl
+                label={__('Link label', 'sage')}
+                value={attributes.linkLabel || ''}
+                onChange={(linkLabel) => setAttributes({ linkLabel })}
+              />
+            </div>
+          </PanelBody>
 
+          <PanelBody title={__('Cards', 'sage')} initialOpen={false}>
             {items.map((item, index) => (
-              <div key={`service-control-${index}`} className="mt-6 rounded border border-zinc-300 p-4">
-                <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-zinc-500">
+              <div key={`service-control-${index}`} className="event-inspector-group">
+                <p className="text-xs font-semibold uppercase tracking-wide text-zinc-500">
                   {`${__('Card', 'sage')} ${index + 1}`}
                 </p>
 
@@ -108,6 +197,72 @@ registerBlockType(metadata.name, {
                   label={__('Description', 'sage')}
                   value={item.desc}
                   onChange={(value) => updateItem(index, 'desc', value)}
+                />
+
+                <TextControl
+                  label={__('Icon (1-2 chars)', 'sage')}
+                  value={item.icon}
+                  onChange={(value) => updateItem(index, 'icon', value)}
+                />
+
+                <MediaUploadCheck>
+                  <MediaUpload
+                    onSelect={(media) => {
+                      const nextItems = rawItems.map((rawItem, itemIndex) => (
+                        itemIndex === index
+                          ? {
+                            ...rawItem,
+                            iconId: media?.id || 0,
+                            iconUrl: media?.url || '',
+                          }
+                          : rawItem
+                      ));
+                      setItems(nextItems);
+                    }}
+                    allowedTypes={['image']}
+                    value={item.iconId || 0}
+                    render={({ open }) => (
+                      <Button variant="secondary" onClick={open}>
+                        {item.iconUrl ? __('Replace custom icon', 'sage') : __('Choose custom icon', 'sage')}
+                      </Button>
+                    )}
+                  />
+                </MediaUploadCheck>
+
+                {item.iconUrl ? (
+                  <>
+                    <img
+                      src={item.iconUrl}
+                      alt=""
+                      style={{
+                        width: '64px',
+                        height: '64px',
+                        objectFit: 'cover',
+                        borderRadius: '10px',
+                        border: '1px solid #d4d4d8',
+                      }}
+                    />
+                    <Button
+                      variant="secondary"
+                      isDestructive
+                      onClick={() => {
+                        const nextItems = rawItems.map((rawItem, itemIndex) => (
+                          itemIndex === index
+                            ? { ...rawItem, iconId: 0, iconUrl: '' }
+                            : rawItem
+                        ));
+                        setItems(nextItems);
+                      }}
+                    >
+                      {__('Remove custom icon', 'sage')}
+                    </Button>
+                  </>
+                ) : null}
+
+                <TextControl
+                  label={__('Accent color (hex)', 'sage')}
+                  value={item.color}
+                  onChange={(value) => updateItem(index, 'color', value)}
                 />
 
                 <div className="mt-3 flex flex-wrap gap-2">
@@ -154,7 +309,7 @@ registerBlockType(metadata.name, {
     );
   },
   save({ attributes }) {
-    const blockProps = useBlockProps.save();
+    const blockProps = useBlockProps.save({ className: 'alignfull' });
 
     return (
       <section {...blockProps}>

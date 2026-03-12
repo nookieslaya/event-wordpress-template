@@ -91,16 +91,47 @@ const initStorySplit = () => {
   sections.forEach((section) => observer.observe(section));
 };
 
+const initExpertiseSection = () => {
+  const sections = Array.from(document.querySelectorAll('.event-expertise-section'));
+
+  if (!sections.length) {
+    return;
+  }
+
+  if (!('IntersectionObserver' in window)) {
+    sections.forEach((section) => section.classList.add('is-visible'));
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries, currentObserver) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) {
+        return;
+      }
+
+      entry.target.classList.add('is-visible');
+      currentObserver.unobserve(entry.target);
+    });
+  }, {
+    rootMargin: '0px 0px -10% 0px',
+    threshold: 0.15,
+  });
+
+  sections.forEach((section) => observer.observe(section));
+};
+
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', () => {
     initHeaderBehavior();
     initMobileMenu();
     initHeroBlocks();
     initStorySplit();
+    initExpertiseSection();
   });
 } else {
   initHeaderBehavior();
   initMobileMenu();
   initHeroBlocks();
   initStorySplit();
+  initExpertiseSection();
 }
