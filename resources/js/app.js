@@ -62,14 +62,45 @@ const initHeroBlocks = () => {
   });
 };
 
+const initStorySplit = () => {
+  const sections = Array.from(document.querySelectorAll('.event-story-split'));
+
+  if (!sections.length) {
+    return;
+  }
+
+  if (!('IntersectionObserver' in window)) {
+    sections.forEach((section) => section.classList.add('is-visible'));
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries, currentObserver) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) {
+        return;
+      }
+
+      entry.target.classList.add('is-visible');
+      currentObserver.unobserve(entry.target);
+    });
+  }, {
+    rootMargin: '0px 0px -12% 0px',
+    threshold: 0.2,
+  });
+
+  sections.forEach((section) => observer.observe(section));
+};
+
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', () => {
     initHeaderBehavior();
     initMobileMenu();
     initHeroBlocks();
+    initStorySplit();
   });
 } else {
   initHeaderBehavior();
   initMobileMenu();
   initHeroBlocks();
+  initStorySplit();
 }

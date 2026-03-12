@@ -23,9 +23,8 @@ const HeroContent = ({ attributes }) => {
   return (
     <section className="event-hero" style={backgroundStyle}>
       <div className="event-hero-bg" aria-hidden="true" />
-      <div className="event-hero-cursor-glow" aria-hidden="true" />
 
-      <div className="mx-auto w-full max-w-[1440px]">
+      <div className="event-section-container">
         <div className="event-hero-content">
           <h1 className="event-hero-title">
             <span className="event-hero-line event-hero-reveal" style={{ '--delay': '0ms' }}>{attributes.lineOne}</span>

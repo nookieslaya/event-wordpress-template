@@ -8,6 +8,7 @@
   "description": "Two-column story section with left-right reveal animation.",
   "textdomain": "sage",
   "supports": {
+    "align": ["full"],
     "anchor": true,
     "html": false
   },

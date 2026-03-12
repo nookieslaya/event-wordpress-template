@@ -17,15 +17,15 @@ const ServicesContent = ({ attributes }) => {
   const headline = getLegacyLocalized(attributes, 'headline', 'Comprehensive Technology Solutions');
 
   return (
-    <section className="mx-auto w-full max-w-[1440px] scroll-mt-32 px-6 py-20 md:py-24" id="services">
-      <header className="text-center">
-        <h2 className="text-balance text-4xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100 md:text-6xl">{headline}</h2>
+    <section className="event-section-container scroll-mt-32 py-20 md:py-24" id="services">
+      <header className="text-left">
+        <h2 className="text-balance text-4xl font-semibold tracking-tight text-white md:text-6xl">{headline}</h2>
       </header>
       <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
         {normalizeItems(attributes.items).map((item, index) => (
-          <article key={`service-${index}`} className="rounded-3xl border border-zinc-200 bg-zinc-50 p-8 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
-            <h3 className="text-2xl font-semibold text-zinc-900 dark:text-zinc-100">{item.title}</h3>
-            <p className="mt-4 text-lg leading-relaxed text-zinc-500 dark:text-zinc-400">{item.desc}</p>
+          <article key={`service-${index}`} className="rounded-3xl border border-white/14 bg-zinc-900/70 p-8 shadow-sm backdrop-blur">
+            <h3 className="text-2xl font-semibold text-zinc-100">{item.title}</h3>
+            <p className="mt-4 text-lg leading-relaxed text-zinc-400">{item.desc}</p>
           </article>
         ))}
       </div>
@@ -36,7 +36,7 @@ const ServicesContent = ({ attributes }) => {
 registerBlockType(metadata.name, {
   ...metadata,
   edit({ attributes, setAttributes }) {
-    const blockProps = useBlockProps({ className: 'bg-zinc-100 dark:bg-zinc-950' });
+    const blockProps = useBlockProps();
     const items = normalizeItems(attributes.items);
 
     const setItems = (nextItems) => {
@@ -154,7 +154,7 @@ registerBlockType(metadata.name, {
     );
   },
   save({ attributes }) {
-    const blockProps = useBlockProps.save({ className: 'bg-zinc-100 dark:bg-zinc-950' });
+    const blockProps = useBlockProps.save();
 
     return (
       <section {...blockProps}>
