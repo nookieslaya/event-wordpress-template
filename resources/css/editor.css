@@ -4,6 +4,11 @@
 @source "../blocks/";
 @source "../js/";
 
+.editor-styles-wrapper {
+  background: #000 !important;
+  color: #fff;
+}
+
 .editor-styles-wrapper .event-inspector-group {
   display: grid;
   gap: 16px;
@@ -39,6 +44,36 @@
   width: 100% !important;
 }
 
+.editor-styles-wrapper .wp-block-event-services-showcase {
+  max-width: none !important;
+  width: 100% !important;
+}
+
+.editor-styles-wrapper .wp-block-event-technology-grid {
+  max-width: none !important;
+  width: 100% !important;
+}
+
+.editor-styles-wrapper .wp-block-event-featured-work {
+  max-width: none !important;
+  width: 100% !important;
+}
+
+.editor-styles-wrapper .wp-block-event-by-the-numbers {
+  max-width: none !important;
+  width: 100% !important;
+}
+
+.editor-styles-wrapper .wp-block-event-contact-section {
+  max-width: none !important;
+  width: 100% !important;
+}
+
+.editor-styles-wrapper .wp-block-event-visual-highlights {
+  max-width: none !important;
+  width: 100% !important;
+}
+
 .editor-styles-wrapper .event-hero {
   min-height: 92svh;
 }
@@ -59,4 +94,98 @@
   opacity: 1 !important;
   transform: none !important;
   animation: none !important;
+}
+
+.editor-styles-wrapper .event-services-showcase__reveal {
+  opacity: 1 !important;
+  transform: none !important;
+  animation: none !important;
+}
+
+.editor-styles-wrapper .event-technology-grid__reveal {
+  opacity: 1 !important;
+  transform: none !important;
+  animation: none !important;
+}
+
+.editor-styles-wrapper .event-about-spotlight {
+  cursor: auto !important;
+}
+
+.editor-styles-wrapper .event-about-spotlight__content {
+  mix-blend-mode: normal !important;
+}
+
+.editor-styles-wrapper .event-about-spotlight__cursor,
+.editor-styles-wrapper .event-about-spotlight__light {
+  display: none !important;
+}
+
+.editor-styles-wrapper .event-about-spotlight__left,
+.editor-styles-wrapper .event-about-spotlight__right {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+.editor-styles-wrapper .event-services-showcase__card,
+.editor-styles-wrapper .event-technology-grid__card,
+.editor-styles-wrapper .event-technology-grid::before,
+.editor-styles-wrapper .event-technology-grid::after,
+.editor-styles-wrapper .event-technology-grid__card::before {
+  animation: none !important;
+  transition: none !important;
+}
+
+.editor-styles-wrapper .event-services-showcase__card:hover,
+.editor-styles-wrapper .event-technology-grid__card:hover {
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.editor-styles-wrapper .event-featured-work__card::after,
+.editor-styles-wrapper .event-featured-work__image,
+.editor-styles-wrapper .event-featured-work__button,
+.editor-styles-wrapper .event-featured-work__track,
+.editor-styles-wrapper .event-featured-work__arrow {
+  animation: none !important;
+  transition: none !important;
+}
+
+.editor-styles-wrapper .event-featured-work__card:hover .event-featured-work__image {
+  transform: none !important;
+}
+
+.editor-styles-wrapper .event-featured-work__viewport {
+  overflow: visible !important;
+}
+
+.editor-styles-wrapper .event-featured-work__track {
+  display: grid !important;
+  gap: 16px !important;
+  transform: none !important;
+}
+
+.editor-styles-wrapper .event-featured-work__slide {
+  width: 100% !important;
+}
+
+.editor-styles-wrapper .event-vh-card,
+.editor-styles-wrapper .event-vh-card__image,
+.editor-styles-wrapper .event-vh-card__overlay {
+  transition: none !important;
+  animation: none !important;
+}
+
+.editor-styles-wrapper .event-vh-card:hover {
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.editor-styles-wrapper .event-vh-card:hover .event-vh-card__image {
+  transform: none !important;
+}
+
+.editor-styles-wrapper .event-vh-card__open {
+  display: none !important;
 }

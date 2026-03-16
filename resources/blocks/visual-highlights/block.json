@@ -1,0 +1,29 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "event/visual-highlights",
+  "title": "Event Visual Highlights",
+  "category": "design",
+  "icon": "format-gallery",
+  "description": "Editable gallery section with premium masonry hover cards.",
+  "textdomain": "sage",
+  "supports": {
+    "align": ["full"],
+    "anchor": true,
+    "html": false
+  },
+  "attributes": {
+    "titleLineOne": { "type": "string", "default": "Visual" },
+    "titleLineTwo": { "type": "string", "default": "Highlights" },
+    "items": {
+      "type": "array",
+      "default": [
+        { "category": "Audio", "title": "Sound Systems", "imageId": 0, "imageUrl": "", "imageAlt": "", "size": "tall" },
+        { "category": "Lighting", "title": "On-Location Setup", "imageId": 0, "imageUrl": "", "imageAlt": "", "size": "small" },
+        { "category": "Backstage", "title": "Stage Atmosphere", "imageId": 0, "imageUrl": "", "imageAlt": "", "size": "tall" },
+        { "category": "Control", "title": "Technical Command", "imageId": 0, "imageUrl": "", "imageAlt": "", "size": "medium" },
+        { "category": "Performance", "title": "Live Direction", "imageId": 0, "imageUrl": "", "imageAlt": "", "size": "small" }
+      ]
+    }
+  }
+}

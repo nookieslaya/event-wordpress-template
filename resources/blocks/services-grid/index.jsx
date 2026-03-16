@@ -59,7 +59,7 @@ const ServicesContent = ({ attributes }) => {
   const items = normalizeItems(attributes.items);
 
   return (
-    <section className="event-section-container event-expertise-section scroll-mt-32 py-20 md:py-24" id="services">
+    <section className="event-section-container event-expertise-section scroll-mt-32 py-14 md:py-24" id="services">
       <header className="mx-auto max-w-5xl text-center">
         <h2 className="event-expertise-title event-expertise-reveal" style={{ '--delay': '0ms' }}>
           <span>{titlePrefix}</span>{' '}

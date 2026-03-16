@@ -1,0 +1,33 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "event/contact-section",
+  "title": "Event Contact Section",
+  "category": "design",
+  "icon": "email-alt",
+  "description": "Contact section with editable content and shortcode form slot.",
+  "textdomain": "sage",
+  "supports": {
+    "align": ["full"],
+    "anchor": true,
+    "html": false
+  },
+  "attributes": {
+    "badge": { "type": "string", "default": "GET IN TOUCH" },
+    "titleLineOne": { "type": "string", "default": "Let's Create" },
+    "titleLineTwo": { "type": "string", "default": "Something Epic" },
+    "description": {
+      "type": "string",
+      "default": "Ready to bring your vision to life? Our team is here to help you create an unforgettable event experience."
+    },
+    "formShortcode": { "type": "string", "default": "[fluentform id=\"1\"]" },
+    "contactItems": {
+      "type": "array",
+      "default": [
+        { "iconKey": "email", "label": "Email", "value": "hello@stagedynamics.com" },
+        { "iconKey": "phone", "label": "Phone", "value": "+1 (555) 123-4567" },
+        { "iconKey": "location", "label": "Location", "value": "Los Angeles, CA" }
+      ]
+    }
+  }
+}

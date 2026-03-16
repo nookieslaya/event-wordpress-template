@@ -1,0 +1,37 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "event/about-spotlight",
+  "title": "Event About Spotlight",
+  "category": "design",
+  "icon": "visibility",
+  "description": "About section with spotlight cursor effect and stats cards.",
+  "textdomain": "sage",
+  "supports": {
+    "align": ["full"],
+    "anchor": true,
+    "html": false
+  },
+  "attributes": {
+    "badge": { "type": "string", "default": "ABOUT US" },
+    "lineOne": { "type": "string", "default": "Illuminating Stories" },
+    "lineTwo": { "type": "string", "default": "Through Light & Sound" },
+    "paragraphOne": {
+      "type": "string",
+      "default": "For over 15 years, we've been pushing the boundaries of live event production. Our team of lighting designers, audio engineers, and visual artists collaborate to create immersive experiences that transcend the ordinary."
+    },
+    "paragraphTwo": {
+      "type": "string",
+      "default": "From intimate club shows to stadium tours, festival stages to corporate events, we bring technical excellence and creative vision to every production."
+    },
+    "stats": {
+      "type": "array",
+      "default": [
+        { "value": "500+", "label": "Events Produced" },
+        { "value": "15", "label": "Years Experience" },
+        { "value": "50+", "label": "Cities Worldwide" },
+        { "value": "200+", "label": "Happy Clients" }
+      ]
+    }
+  }
+}

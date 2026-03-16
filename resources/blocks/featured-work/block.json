@@ -1,0 +1,49 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "event/featured-work",
+  "title": "Event Featured Work",
+  "category": "design",
+  "icon": "format-image",
+  "description": "Featured productions carousel with cinematic hover effect.",
+  "textdomain": "sage",
+  "supports": {
+    "align": ["full"],
+    "anchor": true,
+    "html": false
+  },
+  "attributes": {
+    "badge": { "type": "string", "default": "FEATURED WORK" },
+    "titleLineOne": { "type": "string", "default": "Recent" },
+    "titleLineTwo": { "type": "string", "default": "Productions" },
+    "cards": {
+      "type": "array",
+      "default": [
+        {
+          "projectTitle": "Neon Dreams Festival",
+          "description": "A three-day electronic music festival featuring cutting-edge visual production and immersive stage design.",
+          "location": "Los Angeles, CA",
+          "season": "Summer 2025",
+          "capacity": "50,000+",
+          "buttonText": "View Case Study",
+          "buttonUrl": "#",
+          "imageId": 0,
+          "imageUrl": "",
+          "imageAlt": ""
+        },
+        {
+          "projectTitle": "Aurora Arena Show",
+          "description": "Immersive arena spectacle with synchronized lasers, kinetic lighting and giant LED scenography.",
+          "location": "Berlin, DE",
+          "season": "Winter 2026",
+          "capacity": "32,000+",
+          "buttonText": "View Project",
+          "buttonUrl": "#",
+          "imageId": 0,
+          "imageUrl": "",
+          "imageAlt": ""
+        }
+      ]
+    }
+  }
+}

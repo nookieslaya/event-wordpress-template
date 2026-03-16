@@ -1,0 +1,37 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "event/services-showcase",
+  "title": "Event Services Showcase",
+  "category": "design",
+  "icon": "screenoptions",
+  "description": "Our services section with premium hover cards.",
+  "textdomain": "sage",
+  "supports": {
+    "align": ["full"],
+    "anchor": true,
+    "html": false
+  },
+  "attributes": {
+    "badge": { "type": "string", "default": "OUR SERVICES" },
+    "titleLineOne": { "type": "string", "default": "Complete Production" },
+    "titleLineTwo": { "type": "string", "default": "Solutions" },
+    "subtitle": {
+      "type": "string",
+      "default": "From concept to execution, we deliver world-class production services that elevate every aspect of your event."
+    },
+    "cards": {
+      "type": "array",
+      "default": [
+        { "iconKey": "sparkles", "icon": "✦", "iconId": 0, "iconUrl": "", "title": "Event Production", "desc": "End-to-end production services for concerts, festivals, and live events of any scale.", "color": "#c026d3" },
+        { "iconKey": "stage", "icon": "◉", "iconId": 0, "iconUrl": "", "title": "Stage Design", "desc": "Creative stage design and set construction that brings your vision to life.", "color": "#9333ea" },
+        { "iconKey": "lightbulb", "icon": "◌", "iconId": 0, "iconUrl": "", "title": "Lighting Design", "desc": "Dynamic lighting solutions from intimate spots to massive LED arrays and laser systems.", "color": "#db2777" },
+        { "iconKey": "audio", "icon": "♫", "iconId": 0, "iconUrl": "", "title": "Audio Systems", "desc": "Premium sound reinforcement and mixing for crystal-clear audio experiences.", "color": "#7c3aed" },
+        { "iconKey": "video", "icon": "▸", "iconId": 0, "iconUrl": "", "title": "Visual Production", "desc": "LED walls, projection mapping, and real-time visual effects that captivate audiences.", "color": "#a855f7" },
+        { "iconKey": "festival", "icon": "✧", "iconId": 0, "iconUrl": "", "title": "Festival Production", "desc": "Multi-stage festival production with seamless coordination and technical excellence.", "color": "#c026d3" },
+        { "iconKey": "briefcase", "icon": "▣", "iconId": 0, "iconUrl": "", "title": "Corporate Events", "desc": "Professional event production for conferences, launches, and brand experiences.", "color": "#e11d48" },
+        { "iconKey": "settings", "icon": "⚙", "iconId": 0, "iconUrl": "", "title": "Technical Consulting", "desc": "Expert guidance on technical requirements, venue assessments, and production planning.", "color": "#9333ea" }
+      ]
+    }
+  }
+}

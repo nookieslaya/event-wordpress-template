@@ -1,0 +1,35 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "event/technology-grid",
+  "title": "Event Technology Grid",
+  "category": "design",
+  "icon": "superhero",
+  "description": "Technology section with reactive background and equipment cards.",
+  "textdomain": "sage",
+  "supports": {
+    "align": ["full"],
+    "anchor": true,
+    "html": false
+  },
+  "attributes": {
+    "badge": { "type": "string", "default": "TECHNOLOGY" },
+    "titleLineOne": { "type": "string", "default": "Cutting-Edge" },
+    "titleLineTwo": { "type": "string", "default": "Equipment" },
+    "subtitle": {
+      "type": "string",
+      "default": "We invest in the latest technology to ensure your event sounds and looks spectacular."
+    },
+    "cards": {
+      "type": "array",
+      "default": [
+        { "iconKey": "lighting", "icon": "◌", "title": "Lighting Rigs", "desc": "Moving heads, LED fixtures, laser systems", "tag": "1000+ fixtures available", "color": "#3b82f6" },
+        { "iconKey": "led", "icon": "▣", "title": "LED Walls", "desc": "High-resolution video walls and displays", "tag": "Up to 8K resolution", "color": "#60a5fa" },
+        { "iconKey": "laser", "icon": "⚡", "title": "Laser Systems", "desc": "RGB laser arrays and atmospheric effects", "tag": "20W+ RGB lasers", "color": "#2563eb" },
+        { "iconKey": "audio", "icon": "◉", "title": "Audio Arrays", "desc": "Line array speakers and subwoofers", "tag": "150dB+ SPL capability", "color": "#38bdf8" },
+        { "iconKey": "stage", "icon": "◍", "title": "Stage Structures", "desc": "Truss systems, rigging, and staging", "tag": "Custom configurations", "color": "#1d4ed8" },
+        { "iconKey": "control", "icon": "▦", "title": "Control Systems", "desc": "Lighting consoles, video processors", "tag": "MA3, Resolume, d3", "color": "#3b82f6" }
+      ]
+    }
+  }
+}

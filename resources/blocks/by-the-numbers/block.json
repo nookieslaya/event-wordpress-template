@@ -1,0 +1,29 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "event/by-the-numbers",
+  "title": "Event By The Numbers",
+  "category": "design",
+  "icon": "chart-line",
+  "description": "Stats section with premium typography and gradient highlights.",
+  "textdomain": "sage",
+  "supports": {
+    "align": ["full"],
+    "anchor": true,
+    "html": false
+  },
+  "attributes": {
+    "badge": { "type": "string", "default": "BY THE NUMBERS" },
+    "titleLineOne": { "type": "string", "default": "Proven" },
+    "titleLineTwo": { "type": "string", "default": "Track Record" },
+    "metrics": {
+      "type": "array",
+      "default": [
+        { "value": "500+", "label": "Events Produced", "colorFrom": "#a855f7", "colorTo": "#6366f1" },
+        { "value": "15", "label": "Years of Experience", "colorFrom": "#ec4899", "colorTo": "#d946ef" },
+        { "value": "50+", "label": "Cities", "colorFrom": "#3b82f6", "colorTo": "#2563eb" },
+        { "value": "200+", "label": "Clients", "colorFrom": "#06b6d4", "colorTo": "#0ea5e9" }
+      ]
+    }
+  }
+}

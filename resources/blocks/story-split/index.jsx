@@ -16,7 +16,7 @@ import {
 import metadata from './block.json';
 
 const StorySplitContent = ({ attributes }) => (
-  <section className="event-story-split w-full py-16 md:py-20">
+  <section className="event-story-split w-full py-12 md:py-20">
     <div className="event-section-container">
       <div className="event-story-shell grid gap-6 overflow-hidden lg:grid-cols-2 lg:gap-10">
         <div className="event-story-panel event-story-panel-left flex items-center bg-black py-10 lg:pr-4">
