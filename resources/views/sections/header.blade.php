@@ -41,17 +41,19 @@
         </nav>
 
         <button type="button"
-            class="ml-auto inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/30 text-2xl text-white transition hover:border-white hover:bg-white/10 lg:hidden"
+            class="ml-auto inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/30 text-white transition hover:border-white hover:bg-white/10 lg:hidden"
             aria-expanded="false" aria-controls="event-mobile-menu" aria-label="{{ __('Open menu', 'sage') }}"
             data-mobile-menu-open>
-            ☰
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="event-menu-icon">
+                <path d="M4 7h16M4 12h16M4 17h16" />
+            </svg>
         </button>
     </div>
 </header>
 
 <div id="event-mobile-menu" class="fixed inset-0 z-[80] hidden bg-black" data-mobile-menu-panel>
     <div class="flex h-24 items-center justify-between px-4 md:px-8">
-        <a href="{{ home_url('/') }}" class="shrink-0 no-underline" aria-label="{{ esc_attr($siteName) }}">
+        <a href="{{ home_url('/') }}" class="shrink-0 !no-underline" aria-label="{{ esc_attr($siteName) }}">
             @if ($logoUrl !== '')
                 <img src="{{ esc_url($logoUrl) }}" alt="{{ esc_attr($logoAlt) }}" class="h-8 w-auto" loading="eager"
                     decoding="async" />
@@ -66,9 +68,11 @@
         </a>
 
         <button type="button"
-            class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/30 text-3xl text-white transition hover:border-white hover:bg-white/10"
+            class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/30 text-white transition hover:border-white hover:bg-white/10"
             aria-label="{{ __('Close menu', 'sage') }}" data-mobile-menu-close>
-            ×
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="event-menu-icon">
+                <path d="M6 6l12 12M18 6 6 18" />
+            </svg>
         </button>
     </div>
 
